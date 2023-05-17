@@ -1,0 +1,18 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: app-test-cert
+  namespace: default
+  labels:
+    app: app-test-cert
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: app-test-cert-default.apps-crc.testing
+  to:
+    kind: Service
+    name: app-test-cert
+    weight: 100
+  port:
+    targetPort: port-1
+  wildcardPolicy: None
